@@ -1,6 +1,8 @@
 // server.js
+require('dotenv').config();
 const express = require('express');
 const { PrismaClient } = require('@prisma/client');
+const path = require('path');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -9,6 +11,14 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Middleware to serve static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Route to serve the index.html file
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 app.post('/report-issue', async (req, res) => {
     const { officeArea, facility, comments, email } = req.body;
