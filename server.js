@@ -1,34 +1,29 @@
+// server.js
 const express = require('express');
-const bodyParser = require('body-parser');
 const { PrismaClient } = require('@prisma/client');
-const path = require('path');
-require('dotenv').config(); // Load environment variables
+const bodyParser = require('body-parser');
 
 const app = express();
-const port = process.env.PORT || 3000;
 const prisma = new PrismaClient();
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use((req, res, next) => {
-    console.log(`Request URL: ${req.url}`);
-    next();
-});
 
 app.post('/report-issue', async (req, res) => {
     const { officeArea, facility, comments, email } = req.body;
-    console.log('Received data:', { officeArea, facility, comments, email });
     try {
-        const issue = await prisma.issue.create({
-            data: { officeArea, facility, comments, email },
+        const newIssue = await prisma.issue.create({
+            data: {
+                officeArea,
+                facility,
+                comments,
+                email
+            }
         });
-        console.log('Issue saved:', issue);
-        res.status(200).json(issue);
-    } catch (err) {
-        console.error('Error saving issue:', err);
-        res.status(500).send('Server error');
+        res.status(200).json(newIssue);
+    } catch (error) {
+        res.status(500).json({ error: 'Error reporting issue' });
     }
 });
 
@@ -37,20 +32,14 @@ app.get('/get-reported-issues', async (req, res) => {
         const issues = await prisma.issue.findMany({
             where: {
                 createdAt: {
-                    gte: new Date(new Date().setDate(new Date().getDate() - 7)),
-                },
-            },
+                    gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) // past week
+                }
+            }
         });
-        console.log('Issues retrieved:', issues);
         res.status(200).json(issues);
-    } catch (err) {
-        console.error('Error retrieving issues:', err);
-        res.status(500).send('Server error');
+    } catch (error) {
+        res.status(500).json({ error: 'Error fetching issues' });
     }
-});
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(port, () => {
