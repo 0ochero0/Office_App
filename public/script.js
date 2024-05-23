@@ -69,7 +69,7 @@ $(document).ready(function() {
             $('#reported-issues').show();
             $('#issue-list').empty();
             issues.forEach(issue => {
-                $('#issue-list').append(`<li class="list-group-item">${issue.officeArea} - ${issue.facility} (${issue.comments})</li>`);
+                $('#issue-list').append(`<li class="list-group-item">${issue.officeArea} - ${issue.facility} <br> <i> ${issue.comments}</i> </li>`);
             });
             console.log('Reported issues loaded:', issues);
         });

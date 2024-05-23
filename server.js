@@ -49,7 +49,7 @@ app.get('/get-reported-issues', async (req, res) => {
         const issues = await prisma.issue.findMany({
             where: {
                 createdAt: {
-                    gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) // past week
+                    gte: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000) // one day
                 }
             }
         });

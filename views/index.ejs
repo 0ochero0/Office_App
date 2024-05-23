@@ -25,26 +25,31 @@
            <div class = "container">
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                 <div class="row justify-content-center">
-                    <label class="btn btn-light col-sm-6 col-md-3">
+                    <div class = "col-sm-6">
+                    <label class="btn btn-light ">
                     <input type="radio" name="office-area" value="Meeting Room" autocomplete="off">
                     <img src="/images/meeting.JPG" alt="Meeting Room" class="button-img">
                     Meeting Room
                 </label>
-                <label class="btn btn-light col-sm-6 col-md-3">
+                <label class="btn btn-light">
                     <input type="radio" name="office-area" value="Lobby" autocomplete="off">
                     <img src="images/lobby.jpg" alt="Lobby" class="button-img">
                     Lobby
                 </label>
-                <label class="btn btn-light col-sm-6 col-md-3">
+            </div>
+            <div class = "col-sm-6">
+                <label class="btn btn-light ">
                     <input type="radio" name="office-area" value="Pantry" autocomplete="off">
                     <img src="images/pantry.jpg" alt="Pantry" class="button-img">
                     Pantry
                 </label>
-                <label class="btn btn-light col-sm-6 col-md-3">
+                <label class="btn btn-light ">
                     <input type="radio" name="office-area" value="Workstations" autocomplete="off">
                     <img src="images/office.jpg" alt="Workstations" class="button-img">
                     Workstations
                 </label>
+                </div>
+
             </div>
             </div>
         </div>
@@ -55,28 +60,31 @@
             <h2>Select Facility with Issue</h2>
             
             <div class = "container">
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <div class="row justify-content-center">
-                    <label class="btn btn-light col-sm-6 col-md-3">
+                <div class="row btn-group btn-group-toggle justify-content-center" data-toggle="buttons">
+                    <div class = "col-sm-6">
+                    <label class="btn btn-light ">
                     <input type="radio" name="facility" value="Light" autocomplete="off">
                     <img src="images/light.jpg" alt="Light" class="button-img">
                     Light
                 </label>
-                <label class="btn btn-light col-sm-6 col-md-3">
+                <label class="btn btn-light  ">
                     <input type="radio" name="facility" value="Door" autocomplete="off">
                     <img src="images/door.jpg" alt="Door" class="button-img">
                     Door
                 </label>
-                <label class="btn btn-light col-sm-6 col-md-3">
+                </div>
+                <div class = "col-sm-6">
+                <label class="btn btn-light ">
                     <input type="radio" name="facility" value="Furniture" autocomplete="off">
                     <img src="images/furniture.jpg" alt="Furniture" class="button-img">
                     Furniture
                 </label>
-                <label class="btn btn-light col-sm-6 col-md-3">
+                <label class="btn btn-light">
                     <input type="radio" name="facility" value="Chair" autocomplete="off">
                     <img src="images/chair.jpg" alt="Chair" class="button-img">
                     Chair
                 </label>
+                </div>
                 </div>
             </div>
             </div>
@@ -84,11 +92,13 @@
     
         <!-- Placeholder for displaying gathered data -->
     <div class="container mt-4" id="readback"  style="display:none">
-        <p>You are reporting issues: <span id="displayFacility"></span> @ <span id="displayOfficeArea"></span>.</p>
+        <p>You are reporting issues: <br>
+            <span id="displayFacility"></span> @ <span id="displayOfficeArea"></span>.</p>
     </div>
     
         <!-- Comment and Email Section -->
         <div id="comment-section" class="text-center mb-4" style="display:none;">
+        
             <hr>
             <h2>Further elaboration or suggestions: </h2>
             <form id="issue-form">
@@ -103,13 +113,16 @@
                 </div>
                 <button type="submit" class="btn btn-success">Submit</button>
             </form>
+          
+
         </div>
         <!-- Reported Issues Section -->
         <div id="reported-issues" class="mt-5" style="display:none;">
-            <h2>Reported Issues (Past Week)</h2>
+            <h2>Reported Issues (Past day)</h2>
             <ul id="issue-list" class="list-group">
                 <!-- Issues will be dynamically added here -->
             </ul>
+
         </div>
     </div>
     

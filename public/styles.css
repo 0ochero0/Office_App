@@ -24,10 +24,10 @@ h3 {
 }
 
 .btn-group-toggle .btn {
-    width: 120px; /* Adjust the width to fit the image and text */
+    width: 140px; /* Adjust the width to fit the image and text */
     height: 140px; /* Adjust the height to fit the image and text */
-    display: flex;
-    flex-direction: column;
+  /* display: flex; */
+  flex-direction: column; 
     align-items: center;
     justify-content: center;
     font-size: 14px;
@@ -35,11 +35,25 @@ h3 {
 }
 
 .button-img {
-    width: 100px; /* Adjust the width of the image */
+    width: 120px; /* Adjust the width of the image */
     height: 100px; /* Adjust the height of the image */
     margin-bottom: 10px; /* Add some space between the image and text */
 }
 
 input[type="radio"] {
     display: none;
+}
+
+.form-group{
+   margin-top: 10px;
+   margin-left: 15%;
+   margin-right: 15%;
+   margin-bottom: 10px;
+}
+
+#reported-issues{
+    margin-top: 10px;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 10px; 
 }
