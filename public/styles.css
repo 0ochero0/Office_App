@@ -17,6 +17,12 @@ h3 {
     color: #bd3553;
     font-size: smaller;
 }
+
+#readback {
+    color: #6f4cc1;
+    font-size: medium;
+}
+
 .btn-group-toggle .btn {
     width: 120px; /* Adjust the width to fit the image and text */
     height: 140px; /* Adjust the height to fit the image and text */

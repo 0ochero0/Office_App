@@ -3,13 +3,27 @@ $(document).ready(function() {
     const wordLimit = 50;
 
     // Show facility selection when an office area is selected
+  //  $('input[name="office-area"]').on('change', function() {
+    //    $('#facility-section').show();
+      //  console.log('Office Area selected:', $('input[name="office-area"]:checked').val());
+    // });
+
     $('input[name="office-area"]').on('change', function() {
+        // Declare a const to save the selected office area
+        const selectedOfficeArea = $('input[name="office-area"]:checked').val();
+        document.getElementById('displayOfficeArea').textContent = selectedOfficeArea || 'Not selected';
+        // Show the facility section
         $('#facility-section').show();
-        console.log('Office Area selected:', $('input[name="office-area"]:checked').val());
+        $('#readback').show();
+        
+  
     });
 
     // Show comment section when a facility is selected
     $('input[name="facility"]').on('change', function() {
+        const selectedFacility = $('input[name="facility"]:checked').val();
+        document.getElementById('displayFacility').textContent = selectedFacility || 'Not selected';
+        $('#office-area-section').animate({opacity:0.5});
         $('#comment-section').show();
         console.log('Facility selected:', $('input[name="facility"]:checked').val());
     });
@@ -30,17 +44,10 @@ $(document).ready(function() {
         event.preventDefault();
 
         // Gather input data
-        const officeArea = $('input[name="office-area"]:checked').val();
-        const facility = $('input[name="facility"]:checked').val();
-        const comments = $('#comments').val();
-        const email = $('#email').val();
-
-        // Log input data to the console for testing
-        console.log('Form submitted');
-        console.log('Office Area:', officeArea);
-        console.log('Facility:', facility);
-        console.log('Comments:', comments);
-        console.log('Email:', email);
+    const officeArea = $('input[name="office-area"]:checked').val();
+    const facility = $('input[name="facility"]:checked').val();
+    const comments = $('#comments').val();
+    const email = $('#email').val();
 
         // Send data to the server (this will be implemented in the backend)
         $.post('/report-issue', {
