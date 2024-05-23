@@ -4,6 +4,7 @@ const express = require('express');
 const { PrismaClient } = require('@prisma/client');
 const path = require('path');
 const bodyParser = require('body-parser');
+const moment = require('moment-timezone');
 
 const app = express();
 const prisma = new PrismaClient();
@@ -24,15 +25,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 //    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 //});
 
-
-
 // testing ejs
-app.get('/', (req, res) => {
-    const message = "Welcome to the Office Facility Issue Reporter!";
-    const currentDate = new Date().toLocaleString();
-    res.render('index', { message, currentDate });
-});
+//app.get('/', (req, res) => {
+ //   const message = "Welcome to the Office Facility Issue Reporter!";
+  //  const currentDate = new Date().toLocaleString();
+  //  res.render('index', { message, currentDate });
+// });
 
+// Route to render the main page using EJS
+app.get('/', (req, res) => {
+    const currentDate = moment().tz('Asia/Singapore').format('MMM YY, ddd, hA');
+    const message = 'Hello, this is a test message from server.js'; // Define the message variable
+    res.render('index', { currentDate, message }); // Pass the message and current date to the template
+});
 
 app.post('/report-issue', async (req, res) => {
     const { officeArea, facility, comments, email } = req.body;
