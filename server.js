@@ -12,13 +12,27 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Set EJS as the templating engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views')); // Set views directory
+
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Route to serve the index.html file
+//app.get('/', (req, res) => {
+//    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+//});
+
+
+
+// testing ejs
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    const message = "Welcome to the Office Facility Issue Reporter!";
+    const currentDate = new Date().toLocaleString();
+    res.render('index', { message, currentDate });
 });
+
 
 app.post('/report-issue', async (req, res) => {
     const { officeArea, facility, comments, email } = req.body;
