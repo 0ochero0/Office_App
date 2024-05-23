@@ -52,7 +52,7 @@ $(document).ready(function() {
         }, function(response) {
             // Handle response from the server (e.g., display a success message, clear form)
             console.log('Server response:', response);
-            alert('Thank you for letting us know. Together, we can improve our office environment!');
+            alert('Thank you for helping to improve our office environment!');
             $('#issue-form')[0].reset();
             $('#facility-section').hide();
             $('#comment-section').hide();
