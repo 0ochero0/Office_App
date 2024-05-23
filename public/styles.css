@@ -33,3 +33,7 @@ h3 {
     height: 100px; /* Adjust the height of the image */
     margin-bottom: 10px; /* Add some space between the image and text */
 }
+
+input[type="radio"] {
+    display: none;
+}

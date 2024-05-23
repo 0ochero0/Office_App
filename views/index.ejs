@@ -6,7 +6,7 @@
     <title>Office Facility Issue Reporter</title>
     
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
@@ -16,73 +16,79 @@
 
          <!-- testing ejs -->
          <div class="text-center mb-4">
-            <!--<h2><%= message %></h2> -->
-            <h3><p>Current Date and Time: <%= currentDate %></p> </h3> <!-- Display the current date and time passed from server.js -->
+            <h3><p> <%= currentDate %></p> </h3> <!-- Display the current date and time passed from server.js -->
         </div>
-
-
 
         <!-- Office Area Selection -->
         <div id="office-area-section" class="text-center mb-4">
             <h2>Select Office Area</h2>
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-light">
+           <div class = "container">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <div class="row justify-content-center">
+                    <label class="btn btn-light col-sm-6 col-md-3">
                     <input type="radio" name="office-area" value="Meeting Room" autocomplete="off">
                     <img src="/images/meeting.JPG" alt="Meeting Room" class="button-img">
                     Meeting Room
                 </label>
-                <label class="btn btn-light">
+                <label class="btn btn-light col-sm-6 col-md-3">
                     <input type="radio" name="office-area" value="Lobby" autocomplete="off">
                     <img src="images/lobby.jpg" alt="Lobby" class="button-img">
                     Lobby
                 </label>
-                <label class="btn btn-light">
+                <label class="btn btn-light col-sm-6 col-md-3">
                     <input type="radio" name="office-area" value="Pantry" autocomplete="off">
                     <img src="images/pantry.jpg" alt="Pantry" class="button-img">
                     Pantry
                 </label>
-                <label class="btn btn-light">
+                <label class="btn btn-light col-sm-6 col-md-3">
                     <input type="radio" name="office-area" value="Office Area" autocomplete="off">
                     <img src="images/office.jpg" alt="Office Area" class="button-img">
                     Office Area
                 </label>
             </div>
+            </div>
+        </div>
         </div>
         <hr>
         <!-- Facility Selection -->
         <div id="facility-section" class="text-center mb-4" style="display:none;">
             <h2>Select Facility with Issue</h2>
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-light">
+            
+            <div class = "container">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <div class="row justify-content-center">
+                    <label class="btn btn-light col-sm-6 col-md-3">
                     <input type="radio" name="facility" value="Light" autocomplete="off">
                     <img src="images/light.jpg" alt="Light" class="button-img">
                     Light
                 </label>
-                <label class="btn btn-light">
+                <label class="btn btn-light col-sm-6 col-md-3">
                     <input type="radio" name="facility" value="Door" autocomplete="off">
                     <img src="images/door.jpg" alt="Door" class="button-img">
                     Door
                 </label>
-                <label class="btn btn-light">
+                <label class="btn btn-light col-sm-6 col-md-3">
                     <input type="radio" name="facility" value="Furniture" autocomplete="off">
                     <img src="images/furniture.jpg" alt="Furniture" class="button-img">
                     Furniture
                 </label>
-                <label class="btn btn-light">
+                <label class="btn btn-light col-sm-6 col-md-3">
                     <input type="radio" name="facility" value="Chair" autocomplete="off">
                     <img src="images/chair.jpg" alt="Chair" class="button-img">
                     Chair
                 </label>
+                </div>
+            </div>
             </div>
         </div>
     
         <!-- Comment and Email Section -->
         <div id="comment-section" class="text-center mb-4" style="display:none;">
             <hr>
-            <h2>Additional Details</h2>
+            <h2>Further elaboration or suggestions: </h2>
             <form id="issue-form">
                 <div class="form-group">
-                    <textarea class="form-control" id="comments" rows="3" placeholder="Leave a comment..."></textarea>
+                    <textarea class="form-control" id="comments" rows="3" placeholder="What else should we note? (optional)"></textarea>
                     <p id="word-count-warning" class="text-danger"></p>
 
 
