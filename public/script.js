@@ -2,12 +2,6 @@ $(document).ready(function() {
     // Word count limit
     const wordLimit = 50;
 
-    // Show facility selection when an office area is selected
-  //  $('input[name="office-area"]').on('change', function() {
-    //    $('#facility-section').show();
-      //  console.log('Office Area selected:', $('input[name="office-area"]:checked').val());
-    // });
-
     $('input[name="office-area"]').on('change', function() {
         // Declare a const to save the selected office area
         const selectedOfficeArea = $('input[name="office-area"]:checked').val();
@@ -58,7 +52,7 @@ $(document).ready(function() {
         }, function(response) {
             // Handle response from the server (e.g., display a success message, clear form)
             console.log('Server response:', response);
-            alert('Issue reported successfully!');
+            alert('Thank you for letting us know. Together, we can improve our office environment!');
             $('#issue-form')[0].reset();
             $('#facility-section').hide();
             $('#comment-section').hide();

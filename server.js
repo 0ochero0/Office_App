@@ -20,18 +20,6 @@ app.set('views', path.join(__dirname, 'views')); // Set views directory
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Route to serve the index.html file
-//app.get('/', (req, res) => {
-//    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-//});
-
-// testing ejs
-//app.get('/', (req, res) => {
- //   const message = "Welcome to the Office Facility Issue Reporter!";
-  //  const currentDate = new Date().toLocaleString();
-  //  res.render('index', { message, currentDate });
-// });
-
 // Route to render the main page using EJS
 app.get('/', (req, res) => {
     const currentDate = moment().tz('Asia/Singapore').format('MMM YY, ddd, hA');
