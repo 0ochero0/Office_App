@@ -23,8 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Route to render the main page using EJS
 app.get('/', (req, res) => {
     const currentDate = moment().tz('Asia/Singapore').format('MMM YY, ddd, hA');
-    const message = 'Hello, this is a test message from server.js'; // Define the message variable
-    res.render('index', { currentDate, message }); // Pass the message and current date to the template
+    res.render('index', { currentDate}); // Pass the current date to the template
 });
 
 app.post('/report-issue', async (req, res) => {

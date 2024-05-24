@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Office Facility Issue Reporter</title>
-    
+
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
 </head>
@@ -14,120 +15,128 @@
         <h1 class="text-center">Report an Issue</h1>
         <hr>
 
-         <!-- testing ejs -->
-         <div class="text-center mb-4">
-            <h3><p> <%= currentDate %></p> </h3> <!-- Display the current date and time passed from server.js -->
+        <!-- testing ejs -->
+        <div class="text-center mb-4">
+            <h3>
+                <p>
+                    <%= currentDate %>
+                </p>
+            </h3> <!-- Display the current date and time passed from server.js -->
         </div>
 
         <!-- Office Area Selection -->
         <div id="office-area-section" class="text-center mb-4">
             <h2>Select Office Area</h2>
-           <div class = "container">
+            <div class="container">
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <div class="row justify-content-center">
-                    <div class = "col-sm-6">
-                    <label class="btn btn-light ">
-                    <input type="radio" name="office-area" value="Meeting Room" autocomplete="off">
-                    <img src="/images/meeting.JPG" alt="Meeting Room" class="button-img">
-                    Meeting Room
-                </label>
-                <label class="btn btn-light">
-                    <input type="radio" name="office-area" value="Lobby" autocomplete="off">
-                    <img src="images/lobby.jpg" alt="Lobby" class="button-img">
-                    Lobby
-                </label>
-            </div>
-            <div class = "col-sm-6">
-                <label class="btn btn-light ">
-                    <input type="radio" name="office-area" value="Pantry" autocomplete="off">
-                    <img src="images/pantry.jpg" alt="Pantry" class="button-img">
-                    Pantry
-                </label>
-                <label class="btn btn-light ">
-                    <input type="radio" name="office-area" value="Workstations" autocomplete="off">
-                    <img src="images/office.jpg" alt="Workstations" class="button-img">
-                    Workstations
-                </label>
-                </div>
+                    <div class="row justify-content-center">
+                        <div class="col-sm-6">
+                            <label class="btn btn-light ">
+                                <input type="radio" name="office-area" value="Meeting Room" autocomplete="off">
+                                <img src="/images/meeting.JPG" alt="Meeting Room" class="button-img">
+                                Meeting Room
+                            </label>
+                            <label class="btn btn-light">
+                                <input type="radio" name="office-area" value="Lobby" autocomplete="off">
+                                <img src="images/lobby.jpg" alt="Lobby" class="button-img">
+                                Lobby
+                            </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="btn btn-light ">
+                                <input type="radio" name="office-area" value="Pantry" autocomplete="off">
+                                <img src="images/pantry.jpg" alt="Pantry" class="button-img">
+                                Pantry
+                            </label>
+                            <label class="btn btn-light ">
+                                <input type="radio" name="office-area" value="Workstations" autocomplete="off">
+                                <img src="images/office.jpg" alt="Workstations" class="button-img">
+                                Workstations
+                            </label>
+                        </div>
 
+                    </div>
+                </div>
             </div>
-            </div>
-        </div>
         </div>
         <hr>
         <!-- Facility Selection -->
         <div id="facility-section" class="text-center mb-4" style="display:none;">
             <h2>Select Facility with Issue</h2>
-            
-            <div class = "container">
+
+            <div class="container">
                 <div class="row btn-group btn-group-toggle justify-content-center" data-toggle="buttons">
-                    <div class = "col-sm-6">
-                    <label class="btn btn-light ">
-                    <input type="radio" name="facility" value="Light" autocomplete="off">
-                    <img src="images/light.jpg" alt="Light" class="button-img">
-                    Light
-                </label>
-                <label class="btn btn-light  ">
-                    <input type="radio" name="facility" value="Door" autocomplete="off">
-                    <img src="images/door.jpg" alt="Door" class="button-img">
-                    Door
-                </label>
+                    <div class="col-sm-6">
+                        <label class="btn btn-light ">
+                            <input type="radio" name="facility" value="Light" autocomplete="off">
+                            <img src="images/light.jpg" alt="Light" class="button-img">
+                            Light
+                        </label>
+                        <label class="btn btn-light  ">
+                            <input type="radio" name="facility" value="Door" autocomplete="off">
+                            <img src="images/door.jpg" alt="Door" class="button-img">
+                            Door
+                        </label>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="btn btn-light ">
+                            <input type="radio" name="facility" value="Furniture" autocomplete="off">
+                            <img src="images/furniture.jpg" alt="Furniture" class="button-img">
+                            Furniture
+                        </label>
+                        <label class="btn btn-light">
+                            <input type="radio" name="facility" value="Chair" autocomplete="off">
+                            <img src="images/chair.jpg" alt="Chair" class="button-img">
+                            Chair
+                        </label>
+                    </div>
                 </div>
-                <div class = "col-sm-6">
-                <label class="btn btn-light ">
-                    <input type="radio" name="facility" value="Furniture" autocomplete="off">
-                    <img src="images/furniture.jpg" alt="Furniture" class="button-img">
-                    Furniture
-                </label>
-                <label class="btn btn-light">
-                    <input type="radio" name="facility" value="Chair" autocomplete="off">
-                    <img src="images/chair.jpg" alt="Chair" class="button-img">
-                    Chair
-                </label>
-                </div>
-                </div>
-            </div>
             </div>
         </div>
-    
-        <!-- Placeholder for displaying gathered data -->
-    <div class="container mt-4" id="readback"  style="display:none">
+    </div>
+
+    <!-- Placeholder for displaying gathered data -->
+    <div class="container mt-4" id="readback" style="display:none">
         <p>You are reporting issues: <br>
-            <span id="displayFacility"></span> @ <span id="displayOfficeArea"></span>.</p>
+            <span id="displayFacility"></span> @ <span id="displayOfficeArea"></span>.
+        </p>
     </div>
-    
-        <!-- Comment and Email Section -->
-        <div id="comment-section" class="text-center mb-4" style="display:none;">
-        
-            <hr>
-            <h2>Further elaboration or suggestions: </h2>
-            <form id="issue-form">
-                <div class="form-group">
-                    <textarea class="form-control" id="comments" rows="3" placeholder="What else should we note? (optional)"></textarea>
-                    <p id="word-count-warning" class="text-danger"></p>
+
+    <!-- Comment and Email Section -->
+    <div id="comment-section" class="text-center mb-4" style="display:none;">
+
+        <hr>
+        <h2>Further elaboration or suggestions: </h2>
+        <form id="issue-form">
+            <div class="form-group">
+                <textarea class="form-control" id="comments" rows="3"
+                    placeholder="What else should we note? (optional)"></textarea>
+                <p id="word-count-warning" class="text-danger"></p>
 
 
-                </div>
-                <div class="form-group">
-                    <input type="email" class="form-control" id="email" placeholder="Your email (optional)">
-                </div>
-                <button type="submit" class="btn btn-success">Submit</button>
-            </form>
-          
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" id="email" placeholder="Your email (optional)">
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
 
-        </div>
-        <!-- Reported Issues Section -->
-        <div id="reported-issues" class="mt-5" style="display:none;">
-            <h2>Reported Issues (Past day)</h2>
-            <ul id="issue-list" class="list-group">
-                <!-- Issues will be dynamically added here -->
-            </ul>
 
-        </div>
     </div>
-    
+
+    <!-- Reported Issues Section -->
+    <div id="reported-issues" class="mt-5" style="display:none;">
+        <h2>Reported Issues (Past day)</h2>
+        <ul id="issue-list" class="list-group">
+            <!-- Issues will be dynamically added here -->
+        </ul>
+
+    </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="/script.js"></script>
 </body>
+
 </html>
