@@ -1,0 +1,46 @@
+<!-- views/issues-summary.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Issues Summary</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    .nested-table {
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="mb-4">Issues Summary (Past 3 Days)</h1>
+    <% const groupedData = issuesSummary.reduce((acc, curr) => {
+         acc[curr.officeArea] = acc[curr.officeArea] || [];
+         acc[curr.officeArea].push(curr);
+         return acc;
+       }, {});
+    %>
+    <% for (let officeArea in groupedData) { %>
+      <h2><%= officeArea %></h2>
+      <table class="table table-bordered nested-table">
+        <thead>
+          <tr>
+            <th>Facility</th>
+            <th>Report Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% groupedData[officeArea].forEach(issue => { %>
+            <tr>
+              <td><%= issue.facility %></td>
+              <td><%= issue._count.id %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } %>
+  </div>
+</body>
+</html>

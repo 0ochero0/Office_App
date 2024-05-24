@@ -43,6 +43,38 @@ app.post('/report-issue', async (req, res) => {
     }
 });
 
+app.get('/issues-summary', async (req, res) => {
+    try {
+      // Calculate the date 3 days ago from now
+      const threeDaysAgo = new Date();
+      threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
+  
+      // Fetch issues from the database created in the past 3 days and group by office area and facility
+      const issuesSummary = await prisma.issue.groupBy({
+        by: ['officeArea', 'facility'],
+        where: {
+          createdAt: {
+            gte: threeDaysAgo // Filter issues created within the last 3 days
+          }
+        },
+        _count: {
+          id: true // Count the number of reports for each combination of office area and facility
+        }
+      });
+  
+      // Log the fetched summary for troubleshooting
+      console.log('Fetched issues summary:', issuesSummary);
+  
+      // Render the issues-summary.ejs view and pass the summary data
+      res.render('issues-summary', { issuesSummary });
+    } catch (error) {
+      console.error('Error fetching issues summary:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+  
+
+
 app.get('/get-reported-issues', async (req, res) => {
     try {
         const issues = await prisma.issue.findMany({
@@ -57,6 +89,7 @@ app.get('/get-reported-issues', async (req, res) => {
         res.status(500).json({ error: 'Error fetching issues' });
     }
 });
+
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
