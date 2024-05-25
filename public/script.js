@@ -65,10 +65,37 @@ $(document).ready(function () {
         $.get('/get-reported-issues', { officeArea: selectedOfficeArea }, function (issues) {
             $('#reported-issues').show();
             $('#issue-list').empty();
-            issues.forEach(issue => {
-                $('#issue-list').append(`<li class="list-group-item">${issue.officeArea} - ${issue.facility} <br> <i> ${issue.comments}</i> </li>`);
-            });
+            
+            if (issues.length > 0) {
+               $('#reported-issues h2').html(`Thank you for your feedback! <br> We are also working on the following issues reported to us in the same area.`);
+               
+               issues.forEach(issue => {
+                const formattedDate = formatDate(issue.createdAt);
+                $('#issue-list').append(`<li class="list-group-item">${issue.officeArea} - ${issue.facility} <small style="color: blue;">${formattedDate}</small> <br> <i> ${issue.comments}</i> </li>`);
+                });
+            } else {
+                $('#reported-issues h2').text('Thank you for your feedback! There are no other issues reported in this area.');
+            }
             console.log('Reported issues loaded:', issues);
         });
     }
+
+    // function to convert date format 
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const options = {
+            day: '2-digit',
+            month: 'short',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+        };
+        return new Intl.DateTimeFormat('en-US', options).format(date);
+    }
+
+
+
+    
 });
+
+
