@@ -9,7 +9,7 @@ $(document).ready(function () {
         // Show the facility section
         $('#facility-section').show();
         $('#readback').show();
-
+        document.getElementById('facility-section').scrollIntoView({ behavior: 'smooth' });
 
     });
 
@@ -19,10 +19,11 @@ $(document).ready(function () {
         document.getElementById('displayFacility').textContent = selectedFacility || 'Not selected';
         $('#office-area-section').animate({ opacity: 0.5 });
         $('#comment-section').show();
+        document.getElementById('comment-section').scrollIntoView({ behavior: 'smooth' });
         console.log('Facility selected:', $('input[name="facility"]:checked').val());
     });
 
-    // Restrict word count in comments
+    /* Restrict word count in comments
     $('#comments').on('input', function () {
         let words = $(this).val().split(/\s+/);
         if (words.length > wordLimit) {
@@ -32,6 +33,7 @@ $(document).ready(function () {
             $('#word-count-warning').text(`Word count: ${words.length}/${wordLimit}`);
         }
     });
+    */
 
     // Handle form submission
     $('#issue-form').on('submit', function (event) {

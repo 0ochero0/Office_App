@@ -60,8 +60,17 @@
             </div>
         </div>
         <hr>
+
+            <!-- Placeholder for displaying gathered data -->
+    <div class="container mt-4" id="readback" style="display:none">
+        <p>You are reporting issues: <span id="displayFacility"></span> @ <span id="displayOfficeArea"></span>.
+        </p>
+    </div>
+
+    
         <!-- Facility Selection -->
         <div id="facility-section" class="text-center mb-4" style="display:none;">
+            <hr>
             <h2>Select Facility with Issue</h2>
 
             <div class="container">
@@ -94,24 +103,15 @@
             </div>
         </div>
     </div>
-
-    <!-- Placeholder for displaying gathered data -->
-    <div class="container mt-4" id="readback" style="display:none">
-        <p>You are reporting issues: <br>
-            <span id="displayFacility"></span> @ <span id="displayOfficeArea"></span>.
-        </p>
-    </div>
-
     <!-- Comment and Email Section -->
     <div id="comment-section" class="text-center mb-4" style="display:none;">
-
         <hr>
         <h2>Further elaboration or suggestions: </h2>
         <form id="issue-form">
             <div class="form-group">
-                <textarea class="form-control" id="comments" rows="3"
+                <textarea class="form-control" id="comments" rows="2"
                     placeholder="What else should we note? (optional)"></textarea>
-                <p id="word-count-warning" class="text-danger"></p>
+                <!-- <p id="word-count-warning" class="text-danger"></p> -->
 
 
             </div>
