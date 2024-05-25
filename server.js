@@ -76,12 +76,14 @@ app.get('/issues-summary', async (req, res) => {
 
 
 app.get('/get-reported-issues', async (req, res) => {
-    try {
+  const officeArea = req.query.officeArea;
+  try {
         const issues = await prisma.issue.findMany({
             where: {
                 createdAt: {
-                    gte: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000) // one day
-                }
+                    gte: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000) 
+                },
+                officeArea: officeArea
             }
         });
         res.status(200).json(issues);

@@ -55,14 +55,14 @@ $(document).ready(function () {
             $('#comment-section').hide();
             //$('#word-count-warning').text('');
             // Optionally, display reported issues (this will be implemented in the backend)
-            loadReportedIssues();
+            loadReportedIssues(officeArea);
             $('#office-area-section').hide()
         });
     });
 
     // Function to load reported issues (this will be implemented in the backend)
-    function loadReportedIssues() {
-        $.get('/get-reported-issues', function (issues) {
+    function loadReportedIssues(selectedOfficeArea) {
+        $.get('/get-reported-issues', { officeArea: selectedOfficeArea }, function (issues) {
             $('#reported-issues').show();
             $('#issue-list').empty();
             issues.forEach(issue => {
