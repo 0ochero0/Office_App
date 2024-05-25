@@ -1,26 +1,23 @@
 $(document).ready(function () {
     // Word count limit
-    const wordLimit = 50;
+    //  const wordLimit = 50;
 
     $('input[name="office-area"]').on('change', function () {
         // Declare a const to save the selected office area
         const selectedOfficeArea = $('input[name="office-area"]:checked').val();
         document.getElementById('displayOfficeArea').textContent = selectedOfficeArea || 'Not selected';
-        // Show the facility section
         $('#facility-section').show();
         $('#readback').show();
         document.getElementById('facility-section').scrollIntoView({ behavior: 'smooth' });
-
     });
 
-    // Show comment section when a facility is selected
+    // Show next segment, fade out earlier, move to view
     $('input[name="facility"]').on('change', function () {
         const selectedFacility = $('input[name="facility"]:checked').val();
         document.getElementById('displayFacility').textContent = selectedFacility || 'Not selected';
         $('#office-area-section').animate({ opacity: 0.5 });
         $('#comment-section').show();
         document.getElementById('comment-section').scrollIntoView({ behavior: 'smooth' });
-        console.log('Facility selected:', $('input[name="facility"]:checked').val());
     });
 
     /* Restrict word count in comments
@@ -38,13 +35,11 @@ $(document).ready(function () {
     // Handle form submission
     $('#issue-form').on('submit', function (event) {
         event.preventDefault();
-
         // Gather input data
         const officeArea = $('input[name="office-area"]:checked').val();
         const facility = $('input[name="facility"]:checked').val();
         const comments = $('#comments').val();
         const email = $('#email').val();
-
         // Send data to the server (this will be implemented in the backend)
         $.post('/report-issue', {
             officeArea: officeArea,
@@ -58,10 +53,10 @@ $(document).ready(function () {
             $('#issue-form')[0].reset();
             $('#facility-section').hide();
             $('#comment-section').hide();
-            $('#word-count-warning').text('');
-
+            //$('#word-count-warning').text('');
             // Optionally, display reported issues (this will be implemented in the backend)
             loadReportedIssues();
+            $('#office-area-section').hide()
         });
     });
 
